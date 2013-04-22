@@ -1,4 +1,6 @@
 class Person:
+    MALE = 'M'
+    FEMALE = 'F'
 
     def __init__(self, name, birth_year, gender, mother=None, father=None):
         self.name = name
@@ -28,10 +30,10 @@ class Person:
         return siblings
 
     def get_brothers(self):
-        return list(self._get_siblings('M'))
+        return list(self._get_siblings(self.MALE))
 
     def get_sisters(self):
-        return list(self._get_siblings('F'))
+        return list(self._get_siblings(self.FEMALE))
 
     def children(self, gender=None):
         if gender:
