@@ -1,20 +1,45 @@
 class InvalidMove(Exception):
+
+    """ The player is trying to write in a field that is already used. """
     pass
 
 
 class InvalidValue(Exception):
+
+    """ The player is trying to use an invalid value.
+
+    Valid values for the game are:
+    * X
+    * O
+
+    """
     pass
 
 
 class InvalidKey(Exception):
+
+    """ The player is using invalid coordinates.
+
+    Valid coordinates are:
+    * C3, C2, C1
+    * B3, B2, B1
+    * A3, A2, A1
+    """
     pass
 
 
 class NotYourTurn(Exception):
+
+    """ The same player is trying to play again without waiting the other 
+    player. 
+
+    """
     pass
 
 
 class TicTacToeBoard:
+
+    """ A class modelling the game TicTacToe. """
     COLUMN_NUMBERS = '321'
     ROW_LETTERS = 'ABC'
     VALUES = ['X', 'O']
@@ -51,6 +76,7 @@ class TicTacToeBoard:
             self.update_game_status()
 
     def update_game_status(self):
+        """ Update the status of the current game. """
         if self.status == self.GAME_IN_PROGRESS:
             for value in self.VALUES:
                 if any(len([row + column
@@ -102,4 +128,13 @@ class TicTacToeBoard:
                                               for key in self.KEYS])
 
     def game_status(self):
+        """ Return the status of the current game.
+
+        The four possible statuses are:
+        * 'Game in progress'
+        * 'Draw!'
+        * 'X wins!'
+        * 'O wins!'
+
+        """
         return self.status
